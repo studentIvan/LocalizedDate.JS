@@ -1,5 +1,5 @@
 # LocalizedDate.JS
-## Version 1.0
+## Version 0.5
 
 ### Using
 ```js
