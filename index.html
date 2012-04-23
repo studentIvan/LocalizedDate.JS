@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <title>Js test</title>
-<script type="text/javascript" src="localizeddate.js"></script>
+<script type="text/javascript" src="ldt.min.js"></script>
 </head>
 <body>
 <div id="datetestru">2012-04-23 00:40:29</div>
 <div id="datetesten">2012-04-23 00:40:29</div>
 <script type="text/javascript">
-var localizerr = new LocalizedDate(4, 'ru');
+var ldt = new LocalizedDate(4, 'ru');
 document.getElementById('datetestru').innerHTML = 
-	localizerr.localize(document.getElementById('datetestru').innerHTML);
-var localizer = new LocalizedDate(4, 'en');
+	ldt.localize(document.getElementById('datetestru').innerHTML);
+var ldt = new LocalizedDate(4, 'en');
 document.getElementById('datetesten').innerHTML = 
-	localizer.localize(document.getElementById('datetesten').innerHTML);
+	ldt.localize(document.getElementById('datetesten').innerHTML);
 </script>
 </body>
 </html>
