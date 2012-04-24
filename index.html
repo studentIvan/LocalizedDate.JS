@@ -30,31 +30,58 @@
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>About this project.</h3>
+        <section id="main_content" class="inner">
 
-<div class="highlight">
-<pre><span class="kd">var</span> <span class="nx">ldt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LocalizedDate</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="c1">// timezone Europe/Moscow, locale autodetect</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ldt</span><span class="p">.</span><span class="nx">localize</span><span class="p">(</span><span class="s1">'2012-04-23 00:40:29'</span><span class="p">));</span>
+            <h3>LocalizedDate.js features</h3>
+
+            <p>
+                <ul>
+                    <li>Perfect time localization, userlike, e.g. &quot;tomorrow at 5:43&quot;</li>
+                    <li>International localization - russian and english locales support</li>
+                    <li>Autodetect user locale and select best locale for him (e.g. ua -&gt; ru)</li>
+                    <li>Automatical converting datetime from server timezone to user timezone</li>
+                    <li>Compatible with MySQL Datetime format</li>
+                </ul>
+            </p>
+
+            <h3>Constructor</h3>
+            
+            <p>Constructor create any LocalizedDate instance and give it to variable.</p>
+            <div class="highlight"><pre><span class="kd">var</span> <span class="nx">ldt</span> <span class="o">=</span> <span class="k">new</span> <span
+                    class="nx">LocalizedDate</span><span class="p">(</span><span class="s2">TIMEZONE</span>, <span class="s2">[LOCALE]</span><span class="p">);</span></pre></div>
+            <ul>
+                <li>TIMEZONE - String. Server timezone offset in hours (e.g. 4 for Europe/Moscow).</li>
+                <li>LOCALE - String. User locale as 2 letters (ru, en). Will be detect automatically if missed.</li>
+            </ul>
+
+            <h3>Method &quot;localize&quot;</h3>
+
+            <p>This method localize standart datetime strings by LocalizedDate object locale and server timezone offset.</p>
+            <div class="highlight"><pre><span
+                    class="nx">ldt</span><span class="p">.</span><span class="nx">localize</span><span class="p">(</span><span class="s2">DATETIME</span>, <span class="s2">[USER_CURRENT_DATETIME]</span><span class="p">);</span></pre></div>
+
+            <ul>
+                <li>DATETIME - Simple datetime string (Y-m-d H:i:s or other readable format).</li>
+                <li>USER_CURRENT_DATETIME - String. Using for debug only. Miss this parameter.</li>
+            </ul>
+
+            <h3>Simple code example</h3>
+
+            <div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">ldt</span> <span class="o">=</span> <span class="k">new</span> <span
+        class="nx">LocalizedDate</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span
+        class="c1">// timezone Europe/Moscow, locale autodetect</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span
+            class="nx">ldt</span><span class="p">.</span><span class="nx">localize</span><span class="p">(</span><span
+            class="s1">'2012-04-23 00:40:29'</span><span class="p">));</span>
 </pre>
-</div>
+            </div>
 
+            <h3>Run online test</h3>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Features</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Run online test</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-      </section>
+            <p>You can test many examples into your browser now!</p>
+            <p><a href="testing.html">Click here</a> for run tests.</p>
+        </section>
     </div>
 
     <!-- FOOTER  -->
