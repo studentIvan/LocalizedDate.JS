@@ -55,6 +55,7 @@ LocalizedDate = function ()
     {
         var b = "",
             c = ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"],
+            z = ["одну", "две", "три", "четыре", "пять"],
             d = this.currentDate, e = this.targetDate, f, g, h;
 
         if (d.getFullYear() == e.getFullYear()) {
@@ -67,15 +68,15 @@ LocalizedDate = function ()
                             g = d.getMinutes() - e.getMinutes();
                             h = g % 100;
                             if (h >= 5 && h <= 20) {
-                                f = g + " минут"
+                                f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " минут"
                             } else {
                                 h = h % 10;
                                 if (h == 1 && g == 1) {
                                     f = "минуту"
                                 } else if (h == 1 && g > 1) {
-                                    f = g + " минуту"
+                                    f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " минуту"
                                 } else if (h >= 2 && h <= 4) {
-                                    f = g + " минуты"
+                                    f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " минуты"
                                 } else {
                                     f = g + " минут"
                                 }
@@ -85,21 +86,25 @@ LocalizedDate = function ()
                             g = e.getMinutes() - d.getMinutes();
                             h = g % 100;
                             if (h >= 5 && h <= 20) {
-                                f = g + " минут"
+                                f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " минут"
                             } else {
                                 h = h % 10;
                                 if (h == 1 && g == 1) {
                                     f = "минуту"
                                 } else if (h == 1 && g > 1) {
-                                    f = g + " минуту"
+                                    f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " минуту"
                                 } else if (h >= 2 && h <= 4) {
-                                    f = g + " минуты"
+                                    f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " минуты"
                                 } else {
                                     f = g + " минут"
                                 }
                             }
                             return "через " + f
                         }
+                    } else if (d.getHours() == (e.getHours() + 1)) {
+                        return "час назад"
+                    } else if (d.getHours() == (e.getHours() - 1)) {
+                        return "через час"
                     } else {
                         b += "сегодня "
                     }
@@ -125,6 +130,7 @@ LocalizedDate = function ()
     {
         var b = "",
             c = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
+            z = ["one", "two", "three", "four", "five"],
             d = this.currentDate, e = this.targetDate, f, g, h;
 
         if (d.getFullYear() == e.getFullYear()) {
@@ -137,13 +143,13 @@ LocalizedDate = function ()
                             g = d.getMinutes() - e.getMinutes();
                             h = g % 100;
                             if (h >= 5 && h <= 20) {
-                                f = g + " minutes"
+                                f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " minutes"
                             } else {
                                 h = h % 10;
                                 if (h == 1 && g == 1) {
-                                    f = "one minute"
+                                    f = "a minute"
                                 } else if ((h == 1 && g > 1) || (h >= 2 && h <= 4)) {
-                                    f = g + " minute"
+                                    f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " minute"
                                 } else {
                                     f = g + " minutes"
                                 }
@@ -153,19 +159,23 @@ LocalizedDate = function ()
                             g = e.getMinutes() - d.getMinutes();
                             h = g % 100;
                             if (h >= 5 && h <= 20) {
-                                f = g + " minutes"
+                                f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " minutes"
                             } else {
                                 h = h % 10;
                                 if (h == 1 && g == 1) {
-                                    f = "one minute"
+                                    return "a minute"
                                 } else if ((h == 1 && g > 1) || (h >= 2 && h <= 4)) {
-                                    f = g + " minute"
+                                    f = ((typeof z[g - 1] != 'undefined') ? z[g - 1] : g) + " minute"
                                 } else {
                                     f = g + " minutes"
                                 }
                             }
                             return "after " + f
                         }
+                    } else if (d.getHours() == (e.getHours() + 1)) {
+                        return "an hour ago"
+                    } else if (d.getHours() == (e.getHours() - 1)) {
+                        return "in an hour"
                     } else {
                         b += "today "
                     }

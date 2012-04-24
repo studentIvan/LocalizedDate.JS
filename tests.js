@@ -21,14 +21,14 @@ test( "только что", function() {
 
 test( "минуты назад", function() {
     result = dtl.localize("2012-04-12 01:00:00", "2012-04-12 01:05:00");
-    ok( (result == "5 минут назад") , result );
+    ok( (result == "пять минут назад") , result );
     result = dtl.localize("2012-04-12 01:00:00", "2012-04-12 01:41:00");
     ok( (result == "41 минуту назад") , result );
 });
 
 test( "через N минут", function() {
     result = dtl.localize("2012-04-12 01:05:00", "2012-04-12 01:00:00");
-    ok( (result == "через 5 минут") , result );
+    ok( (result == "через пять минут") , result );
     result = dtl.localize("2012-04-12 01:41:00", "2012-04-12 01:00:00");
     ok( (result == "через 41 минуту") , result );
 });
@@ -62,6 +62,16 @@ test( "завтра", function() {
     ok( (result == "завтра в 01:05") , result );
 });
 
+test( "через час", function() {
+    result = dtl.localize("2012-04-12 02:00:00", "2012-04-12 01:00:00");
+    ok( (result == "через час") , result );
+});
+
+test( "час назад", function() {
+    result = dtl.localize("2012-04-12 02:00:00", "2012-04-12 03:00:00");
+    ok( (result == "час назад") , result );
+});
+
 module("english locale", {
     setup: function () {
         dtl = new LocalizedDate(currentTimezoneOffset, 'en');
@@ -76,14 +86,14 @@ test( "at this moment", function() {
 
 test( "minutes ago", function() {
     result = dtl.localize("2012-04-12 01:00:00", "2012-04-12 01:05:00");
-    ok( (result == "5 minutes ago") , result );
+    ok( (result == "five minutes ago") , result );
     result = dtl.localize("2012-04-12 01:00:00", "2012-04-12 01:41:00");
     ok( (result == "41 minute ago") , result );
 });
 
 test( "after N minutes", function() {
     result = dtl.localize("2012-04-12 01:05:00", "2012-04-12 01:00:00");
-    ok( (result == "after 5 minutes") , result );
+    ok( (result == "after five minutes") , result );
     result = dtl.localize("2012-04-12 01:41:00", "2012-04-12 01:00:00");
     ok( (result == "after 41 minute") , result );
 });
@@ -115,4 +125,14 @@ test( "yesterday", function() {
 test( "tomorrow", function() {
     result = dtl.localize("2012-04-13 01:05:00", "2012-04-12 01:00:00");
     ok( (result == "tomorrow at 01:05") , result );
+});
+
+test( "in an hour", function() {
+    result = dtl.localize("2012-04-12 02:00:00", "2012-04-12 01:00:00");
+    ok( (result == "in an hour") , result );
+});
+
+test( "an hour ago", function() {
+    result = dtl.localize("2012-04-12 02:00:00", "2012-04-12 03:00:00");
+    ok( (result == "an hour ago") , result );
 });
