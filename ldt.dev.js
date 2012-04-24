@@ -22,13 +22,15 @@ LocalizedDate = function ()
      * Method localize
      *
      * @param server_datetime_string
+     * @param testing_datetime_string
      * @return string
      */
-    LocalizedDate.prototype.localize = function (server_datetime_string)
+    LocalizedDate.prototype.localize = function (server_datetime_string, testing_datetime_string)
     {
         if (typeof server_datetime_string == "undefined") return '';
 
-        this.currentDate = new Date;
+        this.currentDate = testing_datetime_string ?
+            (new Date(testing_datetime_string.replace(/(\d+)-(\d+)-(\d+)/, "$2/$3/$1"))) : (new Date);
         this.targetDate = new Date(server_datetime_string.replace(/(\d+)-(\d+)-(\d+)/, "$2/$3/$1"));
 
         this.targetDate.setTime(this.targetDate.getTime() +
@@ -68,8 +70,10 @@ LocalizedDate = function ()
                                 f = g + " минут"
                             } else {
                                 h = h % 10;
-                                if (h == 1) {
+                                if (h == 1 && g == 1) {
                                     f = "минуту"
+                                } else if (h == 1 && g > 1) {
+                                    f = g + " минуту"
                                 } else if (h >= 2 && h <= 4) {
                                     f = g + " минуты"
                                 } else {
@@ -84,8 +88,10 @@ LocalizedDate = function ()
                                 f = g + " минут"
                             } else {
                                 h = h % 10;
-                                if (h == 1) {
+                                if (h == 1 && g == 1) {
                                     f = "минуту"
+                                } else if (h == 1 && g > 1) {
+                                    f = g + " минуту"
                                 } else if (h >= 2 && h <= 4) {
                                     f = g + " минуты"
                                 } else {
@@ -134,9 +140,9 @@ LocalizedDate = function ()
                                 f = g + " minutes"
                             } else {
                                 h = h % 10;
-                                if (h == 1) {
+                                if (h == 1 && g == 1) {
                                     f = "one minute"
-                                } else if (h >= 2 && h <= 4) {
+                                } else if ((h == 1 && g > 1) || (h >= 2 && h <= 4)) {
                                     f = g + " minute"
                                 } else {
                                     f = g + " minutes"
@@ -150,9 +156,9 @@ LocalizedDate = function ()
                                 f = g + " minutes"
                             } else {
                                 h = h % 10;
-                                if (h == 1) {
+                                if (h == 1 && g == 1) {
                                     f = "one minute"
-                                } else if (h >= 2 && h <= 4) {
+                                } else if ((h == 1 && g > 1) || (h >= 2 && h <= 4)) {
                                     f = g + " minute"
                                 } else {
                                     f = g + " minutes"

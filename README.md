@@ -1,5 +1,5 @@
 # LocalizedDate.JS
-## Version 0.5
+## Version 0.6
 
 ### Using
 ```js
@@ -12,7 +12,9 @@
  * For ua, kz and by locale set automatic as ru
  * If LOCALE undefined - script will detect locale automatical
  *
- * Method - localize(SERVER_DATETIME_STRING)
+ * Method - localize(SERVER_DATETIME_STRING, [TESTING_DATETIME_STRING])
+ * SERVER_DATETIME_STRING - target datetime string
+ * TESTING_DATETIME_STRING - set current datetime as (for tests only)
  */
 
 var ldt = new LocalizedDate(4); // timezone Europe/Moscow, locale autodetect
